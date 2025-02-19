@@ -2,6 +2,9 @@ package com.raj.ds.topic.array
 
 import kotlin.Array
 
+/**
+ * Binary search algorithm
+ */
 fun binarySearch(array: Array<Int>, item: Int) {
     var mid = array.size / 2
     var start = 0
