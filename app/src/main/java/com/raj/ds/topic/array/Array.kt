@@ -25,10 +25,28 @@ fun binarySearch(array: Array<Int>, item: Int) {
 
 }
 
+fun reverseArray(array: Array<Int>) {
+    for (i in 0 until array.size / 2) {
+        // Swap elements at i and array.size - 1 - i
+        val temp = array[i]
+        array[i] = array[array.size - 1 - i]
+        array[array.size - 1 - i] = temp
+    }
+    array.forEach { i ->
+        print("  $i")
+    }
+    println()
+}
+
 fun main() {
     println("-------------------------")
     println("Binary Search:")
     binarySearch(arrayOf(1, 2, 3, 4, 5, 6, 7), 7)
     binarySearch(arrayOf(1, 2, 3, 4, 5, 6, 70), 7)
     println("-------------------------")
+
+    println("Rotate array:")
+    reverseArray(arrayOf(1, 2, 3, 4, 5, 6, 7))
+    println("-------------------------")
+
 }
