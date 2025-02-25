@@ -36,11 +36,39 @@ fun subArrayLargestSumBruteForce(array: Array<Int>) {
     println("Sum : $sum")
 }
 
+/*
+ * To print largest sum of sub array using prefix sum
+ */
+fun subArraySumPrefix(array: Array<Int>) {
+    var sum = 0
+    val prefixSum = Array(array.size) { 0 }
+    prefixSum[0] = array[0]
+    for (i in 1..array.size - 1) {
+        prefixSum[i] = prefixSum[i - 1] + array[i]
+    }
+    for (i in 0..array.size - 1) {
+        for (j in i..array.size - 1) {
+            var subSum  = if (i == 0) {
+                prefixSum[j]
+            } else{
+                prefixSum[j] - prefixSum[i - 1]
+            }
+            if (sum < subSum) {
+                sum = subSum
+            }
+        }
+    }
+    println("Sum : $sum")
+}
+
 fun main() {
     printDash()
     println("Sub array :")
     subArray(arrayOf(1, 2, 3, 4, 5, 6))
     printDash()
     println("Sub array largest sum by brute force:")
-    subArrayLargestSumBruteForce(arrayOf(1, 2, 3, 4, 5))
+    subArrayLargestSumBruteForce(arrayOf(1, 2, -3, 4, 5,9))
+    printDash()
+    println("Sub array largest sum by brute prefix:")
+    subArraySumPrefix(arrayOf(1, 2, 3, 4, 5,9))
 }
