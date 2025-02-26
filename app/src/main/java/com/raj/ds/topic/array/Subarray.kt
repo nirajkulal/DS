@@ -48,6 +48,8 @@ fun subArraySumPrefix(array: Array<Int>) {
     }
     for (i in 0..array.size - 1) {
         for (j in i..array.size - 1) {
+            //If i == 0, that means, sum is direct to i to j, no need of substracting the sum of before
+            //items
             var subSum  = if (i == 0) {
                 prefixSum[j]
             } else{
