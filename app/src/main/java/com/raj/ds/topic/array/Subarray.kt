@@ -61,14 +61,34 @@ fun subArraySumPrefix(array: Array<Int>) {
     println("Sum : $sum")
 }
 
+/**
+ * To print largest sum of sub array using kadane's algorithm
+ */
+fun Kandens(array: Array<Int>){
+    //Ignore negative values and reset to zero as it is not making impact on maximum sum
+    var runningSum =0
+    for (i in 0..array.size - 1) {
+        runningSum = runningSum + array[i]
+        if (runningSum < 0) {
+            runningSum = 0
+        }
+    }
+}
+
+
 fun main() {
     printDash()
     println("Sub array :")
-    subArray(arrayOf(1, 2, 3, 4, 5, 6))
+    subArray(getArray())
     printDash()
     println("Sub array largest sum by brute force:")
-    subArrayLargestSumBruteForce(arrayOf(1, 2, -3, 4, 5,9))
+    subArrayLargestSumBruteForce(getArray())
     printDash()
-    println("Sub array largest sum by brute prefix:")
-    subArraySumPrefix(arrayOf(1, 2, 3, 4, 5,9))
+    println("Sub array largest sum by prefix:")
+    subArraySumPrefix(getArray())
+    printDash()
+    println("Sub array largest sum by Kadens:")
+    subArraySumPrefix(getArray())
 }
+
+private fun getArray(): Array<Int> = arrayOf(1, -2, -3, 4, 5, 9)
