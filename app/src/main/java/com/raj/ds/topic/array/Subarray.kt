@@ -64,15 +64,20 @@ fun subArraySumPrefix(array: Array<Int>) {
 /**
  * To print largest sum of sub array using kadane's algorithm
  */
-fun Kandens(array: Array<Int>){
+fun kadens(array: Array<Int>){
     //Ignore negative values and reset to zero as it is not making impact on maximum sum
     var runningSum =0
+    var sum =0
     for (i in 0..array.size - 1) {
         runningSum = runningSum + array[i]
+        if (sum < runningSum) {
+            sum = runningSum
+        }
         if (runningSum < 0) {
             runningSum = 0
         }
     }
+    println("Sum : $sum")
 }
 
 
@@ -88,7 +93,7 @@ fun main() {
     subArraySumPrefix(getArray())
     printDash()
     println("Sub array largest sum by Kadens:")
-    subArraySumPrefix(getArray())
+    kadens(getArray())
 }
 
-private fun getArray(): Array<Int> = arrayOf(1, -2, -3, 4, 5, 9)
+private fun getArray(): Array<Int> = arrayOf(1, 20, -3, 4, 5, -9)
